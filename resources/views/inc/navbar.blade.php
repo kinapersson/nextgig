@@ -1,11 +1,13 @@
-      <nav class="navbar navbar-expand-md navbar-light">
+      <nav class="navbar navbar-expand-md">
           <div class="container">
               <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{URL::asset('/img/logocrop.png')}}" alt="logo" height="100" width="100">
                   {{-- {{ config('app.name', 'Next Gig') }} --}}
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                  <span class="navbar-toggler-icon"></span>
+                  <span class="custom-toggler navbar-toggler-icon">
+                        
+                  </span>
               </button>
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,7 +32,9 @@
 
                     <!-- Authentication Links -->
                     @guest
+                    <i class="fas fa-unlock"></i>
                         <li class="nav-item">
+                            
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Logga in') }}</a>
                         </li>
                         @if (Route::has('register'))

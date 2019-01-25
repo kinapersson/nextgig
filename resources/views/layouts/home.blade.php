@@ -22,8 +22,6 @@
 </head>
 <body>
     <div id="app">
-       
-        @include('inc.navbar')
 
         <main class="">
             
