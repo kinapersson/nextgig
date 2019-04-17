@@ -24,6 +24,9 @@ Route::get('/services', 'PagesController@services');
 //Här skapas alla nödvändiga routes för den controllern
 Route::resource('spelningar', 'PostsController');
 
+Route::resource('spelningar-songkick', 'GetGigsController');
+Route::resource('min-lista', 'SavedGigsController');
+
 //Exempel på dynamisk routing:
 // Route::get('/users/{id}', function ($id) {
 //     return 'this is user '.$id;

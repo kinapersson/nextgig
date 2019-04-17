@@ -7,14 +7,14 @@
 @endif
 
 @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
+        <div class="alert alert-success col-md-6 offset-md-3">
+            <span>{{session('success')}}</span>
         </div>
 @endif
 
 @if(session('error'))
-        <div class="alert alert-danger">
-            {{session('error')}}
+        <div class="alert alert-danger col-md-6 offset-md-3">
+            <span>{{session('error')}}</span>
         </div>
 @endif
 

@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-
-//Om man vill använda vanliga sql-frågor istället för eloquent:
-//use DB; SAMT,  i rätt funktion:
-//$posts = DB::select('SELECT * from posts'); 
+use App\Http\Controllers\GetGigsController;
 
 class PostsController extends Controller
 {
@@ -19,14 +16,29 @@ class PostsController extends Controller
     public function index()
     {
         //Hämtar all data i Post model och dess tabell:
-        //$posts = Post::all();  
+        //$posts = Post::all();
         //Om vi vill hämta ut en specifik post utifrån given parameter:
-        //$posts = Post::where('title', 'Post 1')->get(); 
+        //$posts = Post::where('title', 'Post 1')->get();
         //$posts = Post::paginate(30);
-        
-        $posts = Post::orderBy('created_at', 'desc')->get(); 
 
-        return view('posts.index')->with('posts', $posts);
+        $gigs = new GetGigsController();
+
+        $other_posts = $gigs->allGigs();
+            
+        //Visar bara kommande datum från Post model
+        $posts = Post::select('*')->where('date', '>', date('Y-m-d'))->orderBy('date', 'desc')->get();
+
+        //Pushar in externt api
+        foreach($posts as $post) {
+            array_push($other_posts, $post);
+        }
+
+        //Sorterar i datumordning
+        usort($other_posts, function($post1, $post2) {
+            return $post1["date"] <=> $post2["date"];
+        });
+
+        return view('posts.index')->with('posts', $other_posts);
     }
 
     /**
@@ -50,15 +62,19 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'location' => 'required',
+            'date' => 'required',
         ]);
 
         //Skapa post
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->location = $request->input('location');
+        $post->date = $request->input('date');
+
         $post->save();
-        
-        //OBS tillfälligt, input-data ska skickas till mig för godkännande
+
         return redirect('/spelningar')->with('success', 'Spelning uppladdad');
     }
 
@@ -70,7 +86,15 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $gigs = new GetGigsController();
+
+        //Lösning pga olika url:er mellan apier
+        if (isset($_GET["src"]) && $_GET["src"] == "songkick") {
+            $post = $gigs->singleGig($id);
+        }
+        else {
+            $post = Post::find($id); 
+        }
 
         if($post == null) {
             return view('pages.404');
@@ -103,16 +127,19 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'location' => 'required',
+            'date' => 'required'
         ]);
 
-        //Uppdatera post
+        //Uppdatera (redigera) post
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->location = $request->input('location');
+        $post->date = $request->input('date');
         $post->save();
-        
-        //OBS tillfälligt, input-data ska skickas till mig för godkännande
-        return redirect('/spelningar')->with('success', 'Spelning redigerad');
+
+        return redirect('/dashboard')->with('success', 'Spelning redigerad!');
     }
 
     /**
@@ -126,7 +153,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return redirect('/spelningar')->with('success', 'Spelning borttagen');
+        return redirect('/dashboard')->with('success', 'Spelning borttagen!');
 
     }
 }

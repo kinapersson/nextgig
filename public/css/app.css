@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Montserrat", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -5979,7 +5979,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6104,7 +6104,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10490,38 +10490,313 @@ a.text-dark:focus {
   }
 }
 
-body,
+html,
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+  position: relative;
+}
+
 a,
-span {
-  font-family: "Roboto", sans-serif;
+span,
+label {
+  font-family: "Montserrat", sans-serif;
   color: #ffffff;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  background-color: initial;
+}
+
+a:hover {
+  color: #F977BC;
+  text-decoration: none;
+}
+
+a:hover a.span {
+  color: #F977BC;
+}
+
+a:hover .card:after {
+  color: #F977BC;
+}
+
+h1,
+h2,
+h3 {
   font-family: "Slabo 13px", serif;
   text-shadow: 1px 1px 3px #1a1a1a;
+  margin-bottom: 30px;
+}
+
+.main {
+  margin: 18px 0;
+  bottom-padding: 170px;
+}
+
+.main h1 {
+  display: inline-block;
+}
+
+.select {
+  float: right;
+  margin-top: 18px;
+}
+
+.select label {
+  margin-right: 5px;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #F977BC;
+  margin: 10px 0;
+  padding: 14px 0;
+  padding-bottom: 21px;
+  position: relative;
+}
+
+.card:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\F054";
+  color: white;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  position: absolute;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card .save-icon {
+  position: absolute;
+  right: 70px;
+  padding-top: 45px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.card .save-icon:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  content: "\F004";
+  position: absolute;
+  top: 21px;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+}
+
+.return {
+  position: absolute;
+  display: inline-block;
+  top: 15px;
+  left: -115px;
+  text-decoration: underline;
+}
+
+.admin-tools {
+  float: right;
+}
+
+.item {
+  padding-bottom: 20px;
+}
+
+.item h1 {
+  border-bottom: 1px solid #F977BC;
+}
+
+.edit-form {
+  display: inline-block;
 }
 
 .navbar {
-  background-image: url("/img/jumbo-bg.jpg");
+  background-color: blacK;
+  height: 125px;
+  font-weight: 900;
+}
+
+.dashboard h1 {
+  display: block;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.dashboard .dashboard-buttons {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.dashboard .dashboard-content {
+  background-color: #3d3d3d;
+  padding: 35px;
+  border-radius: 10px;
+}
+
+.dashboard .dashboard-content .card {
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid #F977BC;
+}
+
+.dashboard .dashboard-content .card:first-of-type {
+  border-top: 1px solid #F977BC;
+}
+
+.dashboard .dashboard-content .card .save-icon {
+  display: none;
+}
+
+.login-link {
+  border-left: 1px solid white;
+  margin-left: 30px;
+  padding-left: 30px !important;
+}
+
+.content .logout-btn {
+  margin-left: 20px;
+  margin-top: 60px;
+}
+
+.content .create-btn {
+  margin-top: 60px;
+}
+
+.content h1 {
+  margin-bottom: 50px;
+}
+
+.navbar-brand {
+  background-color: transparent;
 }
 
 .jumbotron {
-  background-image: url("/img/jumbo-bg.jpg");
+  background-image: url("/img/jumbo-bg4.jpg");
   background-size: cover;
-  padding-top: 6rem;
+  margin-bottom: 0;
+  padding: 25px;
+}
+
+.jumbotron .container {
+  margin: auto;
+  width: 35%;
+}
+
+.jumbotron h3 {
+  text-align: center;
+}
+
+.lightning {
+  background-image: url("/img/logoblixt.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  margin: auto;
 }
 
 .btn {
-  border-radius: 20px;
-  background-image: url("/img/pow.png");
-  width: 90px;
-  height: 90px;
+  background-color: #F977BC;
+  border-color: #F977BC;
+  border-radius: 50px;
+  border: 1px solid #5a0909;
+  font-family: "Slabo 13px", serif;
+  margin: 10px 6px;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.btn-spotify {
+  background-color: #1db954;
+}
+
+.btn-playlist-spotify {
+  margin: auto;
+  display: block;
+  margin-top: 30px;
+}
+
+.btn-save i {
+  margin-left: 5px;
+}
+
+.card-header {
+  border-bottom: 1px solid #F977BC;
+}
+
+.footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 170px;
+}
+
+.footer .img {
+  background-image: url("/img/me.jpg");
+  background-position: bottom center;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-color: transparent;
-  border: 0;
-  padding-top: 33px;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.footer .about {
+  margin-right: 15px;
+  margin-top: 15px;
+  text-align: right;
+}
+
+.footer .about span {
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer .about-item {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 35px;
+  right: 23px;
+}
+
+.main-container {
+  background-color: #1a1a1a;
+}
+
+.alert-success {
+  background-color: #ffbce0;
+  border-color: #F977BC;
+  margin-bottom: 30px;
+}
+
+.alert-success span {
+  color: #5f0b19;
+  background-color: initial;
 }
 

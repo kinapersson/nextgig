@@ -13,6 +13,14 @@
             {{Form::label('body', 'Beskrivning')}}
             {{Form::textarea('body', $post->body, [ 'id' => '{{--article-ckeditor--}}', 'class' => 'form-control', 'placeholder' => ''])}}
         </div>
+        <div class="form-group">
+            {{Form::label('location', 'Lokal')}}
+            {{Form::text('location', $post->location, ['class' => 'form-control', 'placeholder' => ''])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('date', 'Datum')}}
+            {{Form::date('date', $post->date, [ 'id' => '{{--article-ckeditor--}}', 'class' => 'form-control', 'placeholder' => ''])}}
+        </div>
 
         {{-- Eftersom det inte går att använda PUT i formuläret ovan gör man ett gömt formulär med PUT-metoden i --}}
         {{Form::hidden('_method', 'PUT')}}
