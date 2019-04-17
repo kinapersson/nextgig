@@ -1,3 +1,31 @@
+
+NextGig
+
+Next Gig är mitt examensarbete som jag jobbat med under perioden december 2018 - april 2019.
+
+Syftet är att visa aktuella spelningar i Stockholm. Som inloggad har du möjlighet att lägga till/ändra/ta bort (CRUD) spelningar manuellt. 
+
+Instruktioner:
+
+- Klona ner repot
+- Sätt upp en lokal server
+- Återställ databasen som finns inkluderad i repot (exjobb.xml)
+- Ändra aktuella uppgifter i .env-filen så att de stämmer överens med din lokala miljö (självklart hade jag implementerat en säkrare lösning här om databasen legat live)
+
+
+Krav som är uppfyllda:
+
+- Minst ett externt system används via ett API. JSON, XML eller något annat format som läses och/eller skrivs. En embed är inte tillräckligt.
+- Routing och snygga url:er. Alla anrop går via en dispatcher (index.php) och controllers hanterar url-strukturen. Eller liknande, inga anrop till specifika .php-filer. 
+- Tjänsten/produkten innehåller användarhantering
+- Front end är anpassat till samtliga skärmupplösningar och pixeltätheter. 
+- Produkten är ett tillägg till ett befintligt system. Systemets kodstandard och tekniker för t.ex. användarhantering, databaser m.m. måste följas.
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
